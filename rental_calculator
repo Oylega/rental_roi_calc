@@ -1,0 +1,67 @@
+
+
+
+
+class RentalProperty():
+    def __init__(self):
+        self.monthly_income = []
+        self.monthly_expenses = []
+        self.investment = []
+        total_income = sum(self.monthly_income)
+        total_expense = sum(self.monthly_expenses)
+        total_investment = sum(self.investment)
+        RentalProperty.income(self)
+
+    def income(self):
+        rent_inc = input("Enter monthly rental income: \n")
+        self.monthly_income.append(float(rent_inc))
+        laundry_inc = input("Enter monthly laundry income:\n")
+        self.monthly_income.append(float(laundry_inc))
+        storage_inc = input("Enter monthly storage income:\n")
+        self.monthly_income.append(float(storage_inc))
+        misc_inc = input("Enter any other miscellanious monthly income:\n")
+        self.monthly_income.append(float(misc_inc))
+        total_income = '{:,.2f}'.format(sum(self.monthly_income))
+        print('Total monthly income: ', total_income)
+        RentalProperty.expenses(self)
+
+    def expenses(self):
+        property_tax = input("Enter monthly property tax expenses:\n")
+        self.monthly_expenses.append(float(property_tax))
+        insurance = input("Enter monthly insurance expenses:\n")
+        self.monthly_expenses.append(float(insurance))
+        utilities = input("Enter total monthly utilities expenses:\n")
+        self.monthly_expenses.append(float(utilities))
+        hoa = input("Enter monthly HOA fees:\n")
+        self.monthly_expenses.append(float(hoa))
+        vacancy = input("Enter monthly vacancy fees:\n")
+        self.monthly_expenses.append(float(vacancy))
+        repairs = input("Enter monthly repair fees:\n")
+        self.monthly_expenses.append(float(repairs))
+        capex = input("Enter monthly capital expenditures:\n")
+        self.monthly_expenses.append(float(capex))
+        mortgage = input("Enter monthly mortgage payments:\n")
+        self.monthly_expenses.append(float(mortgage))
+        property_mgmt = input("Enter monthly property management expenses:\n")
+        self.monthly_expenses.append(float(property_mgmt)) 
+        total_expense = '{:,.2f}'.format(sum(self.monthly_expenses))
+        print(total_expense)
+        RentalProperty.cashOnCashRoi(self)
+
+    def cashOnCashRoi(self):
+        down_payment = input("Enter down payment:\n")
+        self.investment.append(float(down_payment))
+        close_costs = input("Enter closing costs:\n")
+        self.investment.append(float(close_costs))
+        renovations = input("Enter renovations budget:\n")
+        self.investment.append(float(renovations))
+        misc_inv_exp = input("Enter other miscellaneous upfront investment expenses:\n")
+        self.investment.append(float(misc_inv_exp))
+        total_investment = '{:,.2f}'.format(sum(self.investment))
+        print(total_investment)
+
+        roi = 100 * (12 * (sum(self.monthly_income) - sum(self.monthly_expenses))) / sum(self.investment)
+        print(f'The ROI for this property is:', roi, '%')
+       
+
+RentalProperty()
